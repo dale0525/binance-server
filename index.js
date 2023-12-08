@@ -11,8 +11,6 @@ app.all('*', async (req, res) => {
   try {
     const { method, headers, body, originalUrl } = req;
     const remoteUrl = `${remoteServerUrl}${originalUrl}`;
-    console.log(JSON.stringify(headers));
-    return;
     const selectedHeaders = {
       'Content-Type': headers['content-type'],
       'BinanePay-Certificate-SN': headers['binanepay-certificate-sn'],
