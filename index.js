@@ -11,11 +11,18 @@ app.all('*', async (req, res) => {
   try {
     const { method, headers, body, originalUrl } = req;
     const remoteUrl = `${remoteServerUrl}${originalUrl}`;
+    const selectedHeaders = {
+      'Content-Type': headers['content-type'],
+      'BinanePay-Certificate-SN': headers['BinanePay-Certificate-SN'],
+      'BinancePay-Timestamp': headers['BinancePay-Timestamp'],
+      'BinancePay-Nonce': headers['BinancePay-Nonce'],
+      'BinancePay-Signature': headers['BinancePay-Signature'],
+    };
 
     const remoteResponse = await axios({
       method: method.toLowerCase(),
       url: remoteUrl,
-      headers,
+      headers: selectedHeaders,
       data: body,
     });
 
