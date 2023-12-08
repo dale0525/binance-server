@@ -13,7 +13,7 @@ app.all('*', async (req, res) => {
     const remoteUrl = `${remoteServerUrl}${originalUrl}`;
     const selectedHeaders = {
       'Content-Type': headers['content-type'],
-      'BinanePay-Certificate-SN': headers['binanepay-certificate-sn'],
+      'BinancePay-Certificate-SN': headers['binancepay-certificate-sn'],
       'BinancePay-Timestamp': headers['binancepay-timestamp'],
       'BinancePay-Nonce': headers['binancepay-nonce'],
       'BinancePay-Signature': headers['binancepay-signature'],
