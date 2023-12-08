@@ -1,0 +1,2 @@
+### A Binance proxy for the Binance API in Docker
+Deploy the server on a location which is not restricted by Binance. The server will forward all requests to Binance and return the response to the client. This way you can use the Binance API from a restricted location.
