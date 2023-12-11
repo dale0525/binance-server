@@ -19,11 +19,15 @@ app.all('*', async (req, res) => {
       'BinancePay-Signature': headers['binancepay-signature'],
     };
 
-    const remoteResponse = await axios({
+    const remoteResponse = body != null ? await axios({
       method: method.toLowerCase(),
       url: remoteUrl,
       headers: selectedHeaders,
       data: body,
+    }) : await axios({
+      method: method.toLowerCase(),
+      url: remoteUrl,
+      headers: selectedHeaders,
     });
 
     res.status(remoteResponse.status).json(remoteResponse.data);
