@@ -10,7 +10,7 @@ app.use(express.json());
 app.all('*', async (req, res) => {
   try {
     const { method, headers, body, originalUrl } = req;
-    console.log(body);
+    // console.log(body);
     const remoteUrl = `${remoteServerUrl}${originalUrl}`;
     const selectedHeaders = {
       'Content-Type': headers['content-type'],
@@ -20,7 +20,7 @@ app.all('*', async (req, res) => {
       'BinancePay-Signature': headers['binancepay-signature'],
     };
 
-    const remoteResponse = body != null ? await axios({
+    const remoteResponse = (body != null && Object.keys(body).length > 0) ? await axios({
       method: method.toLowerCase(),
       url: remoteUrl,
       headers: selectedHeaders,
