@@ -10,6 +10,7 @@ app.use(express.json());
 app.all('*', async (req, res) => {
   try {
     const { method, headers, body, originalUrl } = req;
+    console.log(body);
     const remoteUrl = `${remoteServerUrl}${originalUrl}`;
     const selectedHeaders = {
       'Content-Type': headers['content-type'],
