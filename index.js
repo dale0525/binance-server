@@ -10,7 +10,10 @@ app.use(express.json());
 app.all('*', async (req, res) => {
   try {
     const { method, headers, body, originalUrl } = req;
-    // console.log(body);
+    if (headers.hasOwnProperty('binancepay-certificate-sn') === false || headers.hasOwnProperty('binancepay-timestamp') === false || headers.hasOwnProperty('binancepay-nonce') === false || headers.hasOwnProperty('binancepay-signature') === false) {
+      res.status(400).json({ error: 'Missing header' });
+      return;
+    }
     const remoteUrl = `${remoteServerUrl}${originalUrl}`;
     const selectedHeaders = {
       'Content-Type': headers['content-type'],
